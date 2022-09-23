@@ -188,7 +188,7 @@ export default {
             start: 'top center',
             end: 'bottom center',
             scrub: 1,
-            markers: true,
+            markers: false,
             toggleClass: {
               targets: '#gsapContainer',
               className: 'ani0' + index,
