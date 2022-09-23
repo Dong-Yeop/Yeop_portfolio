@@ -3,13 +3,13 @@
     <div class="footer-inner">
       <h2 class="footer-logo">YEOP</h2>
       <p class="copyright">© 2022 <span>Yeop</span> All right reserved.</p>
-      <div class="top-btn">
+      <button class="top-btn" v-scroll-to="'#app'">
         <LottieAnimation
           ref="anim"
           :animationData="require('@/assets/lottie/top_btn.json')"
           :loop="true"
         ></LottieAnimation>
-      </div>
+      </button>
     </div>
   </footer>
 </template>

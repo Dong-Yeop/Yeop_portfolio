@@ -1,21 +1,21 @@
 <template>
-  <section>
+  <section id="aboutMove">
     <div class="text-bg">
-      <strong>WOULD YOU<br />LIKE TO<br />JOIN ME</strong>
+      <strong class="parallax">WOULD YOU<br />LIKE TO<br />JOIN ME</strong>
     </div>
     <div class="gradient">
       <img src="@/assets/images/gradient/01.png" alt="circle" />
     </div>
     <div class="section-inner">
-      <h2 class="sub-title">About me</h2>
-      <p class="text">
+      <h2 class="sub-title parallax">About me</h2>
+      <p class="text parallax bottom-move">
         안녕하세요. 저는 누구보다 개발을 즐기고 재밌게 하고 싶은 이동엽입니다
         웹을 배우기 위해 학원을 수료하여 스타트업 회사에서 웹 퍼블리셔로 2년간
         근무 후에 독학으로 프론트엔드 개발자가 되기 위하여 노력 중에 있으며,
         Vue.js를 중점으로 공부 중에 있습니다 개발하는 모든 순간은 아니지만
         그래도 개발의 재미를 찾으려 노력하고 즐기는 개발자가 되려 합니다.
       </p>
-      <div class="about-lottie clear">
+      <div class="about-lottie clear parallax">
         <LottieAnimation
           ref="anim"
           :animationData="require('@/assets/lottie/about_visual.json')"
@@ -28,15 +28,55 @@
 
 <script>
 import LottieAnimation from 'lottie-web-vue';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
   components: {
     LottieAnimation,
   },
+  methods: {
+    scrollAnimation() {
+      const headings = gsap.utils.toArray('.parallax');
+
+      headings.forEach(title => {
+        gsap.to(title, {
+          scrollTrigger: {
+            trigger: title,
+            start: 'top 70%',
+            end: 'bottom center',
+            scrub: 1,
+            markers: false,
+            once: true,
+            toggleClass: 'active',
+          },
+        });
+      });
+    },
+  },
+  mounted() {
+    this.scrollAnimation();
+  },
 };
 </script>
 
 <style scoped>
+/* parallax */
+.parallax.bottom-move {
+  transform: translateY(50px);
+}
+.parallax {
+  transition: all 1s ease;
+  opacity: 0;
+}
+.parallax.active {
+  opacity: 1;
+}
+.parallax.bottom-move.active {
+  transform: translateY(0);
+}
+
 .section-inner {
   padding-top: 80px;
   padding-bottom: calc(90px + 46vw);
@@ -70,6 +110,7 @@ export default {
   font-size: 17.2vw;
   color: #111;
   white-space: nowrap;
+  transition-delay: 0.4s;
 }
 /* 가로 해상도 768 이상 */
 @media screen and (min-width: 768px) {

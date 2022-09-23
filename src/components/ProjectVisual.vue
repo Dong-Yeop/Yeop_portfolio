@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section id="projectMove">
     <img
       class="gradient01"
       src="@/assets/images/gradient/02.png"
@@ -181,20 +181,24 @@ export default {
     scrollAnimation() {
       const headings = gsap.utils.toArray('li.website');
 
-      headings.forEach((title, index) => {
-        gsap.to(title, {
-          scrollTrigger: {
-            trigger: title,
-            start: 'top center',
-            end: 'bottom center',
-            scrub: 1,
-            markers: false,
-            toggleClass: {
-              targets: '#gsapContainer',
-              className: 'ani0' + index,
-            },
-          },
-        });
+      ScrollTrigger.matchMedia({
+        '(min-width: 768px)': function () {
+          headings.forEach((title, index) => {
+            gsap.to(title, {
+              scrollTrigger: {
+                trigger: title,
+                start: 'top center',
+                end: 'bottom center',
+                scrub: 1,
+                markers: false,
+                toggleClass: {
+                  targets: '#gsapContainer',
+                  className: 'ani0' + index,
+                },
+              },
+            });
+          });
+        },
       });
     },
   },

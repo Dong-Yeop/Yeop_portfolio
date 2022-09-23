@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section id="contactMove">
     <div class="text-bg">
       <strong>WOULD YOU LIKE TO JOIN ME WOULD YOU LIKE TO JOIN ME</strong>
     </div>

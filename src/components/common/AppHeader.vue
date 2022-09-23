@@ -3,9 +3,9 @@
     <div class="header-inner">
       <h1 class="logo"><a href="/">YEOP</a></h1>
       <ul class="nav">
-        <li>About me</li>
-        <li>Project</li>
-        <li>Contact</li>
+        <li><button v-scroll-to="'#aboutMove'">About me</button></li>
+        <li><button v-scroll-to="'#projectMove'">Project</button></li>
+        <li><button v-scroll-to="'#contactMove'">Contact</button></li>
       </ul>
     </div>
   </header>
@@ -39,8 +39,9 @@ header {
   font-size: 13px;
   font-weight: 700;
 }
-.header-inner .nav li {
-  cursor: pointer;
+.header-inner .nav li button {
+  font: inherit;
+  color: inherit;
 }
 .header-inner .nav li + li {
   margin-left: 4.1vw;
